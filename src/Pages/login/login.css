@@ -1,0 +1,47 @@
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  background: #f08080;
+}
+
+.loginTitle {
+  font-size: 40px;
+  font-family: "Lora", serif;
+}
+
+.loginForm {
+  margin-top: 20px;
+}
+
+.botonLogin {
+  margin-top: 20px;
+  background-color: rgb(11, 134, 134);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+}
+.botonRegister {
+  position: absolute;
+  top: 80px;
+  right: 70px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 500px) {
+  .botonRegister {
+    right: 35px;
+    margin-top: 500px;
+  }
+}

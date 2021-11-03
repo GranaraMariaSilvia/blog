@@ -1,0 +1,52 @@
+.register {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(134, 87, 87, 0.5)),
+    url("https://www.significadodelasflores.net/wp-content/uploads/2019/04/Significado-de-la-flor-de-la-familia-1.jpg");
+  background-size: cover;
+}
+
+.registerTitle {
+  font-size: 40px;
+  font-family: "Lora", serif;
+}
+
+.alertError{
+  font-size: 12px;
+  font-family: "Lora", serif;
+
+}
+
+.registerForm {
+  margin-top: 20px;
+}
+
+.registerBoton {
+  margin-top: 20px;
+  padding: 10px;
+
+  width: 300px;
+}
+.loginBoton {
+  position: absolute;
+  top: 80px;
+  right: 70px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 500px) {
+  .loginBoton {
+    right: 35px;
+    margin-top: 500px;
+  }
+}
