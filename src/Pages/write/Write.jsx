@@ -1,8 +1,33 @@
-import React from "react";
+import React,{useState} from "react";
 import "./write.css";
-import { Form, Button, Col, Row, Card } from "react-bootstrap";
+import {  Alert} from "react-bootstrap";
+import { set } from "react-hook-form";
 
 function Write() {
+
+  const [error, setError] = useState(false);
+
+const [publicacion, setPublicacion] =useState({
+     titulo: "",
+     historia: ""
+});
+
+const datosPublicacion =(e)=>{
+    
+  setPublicacion({
+       ...publicacion,
+       [e.target.name] : e.target.value
+  })
+}
+
+
+const enviarEscrito =(e)=>{
+  e.preventDefault();
+
+ 
+    console.log(publicacion)
+}
+
   return (
     <div className="write">
       <img
@@ -10,8 +35,15 @@ function Write() {
         src="https://img.vixdata.io/pd/jpg-large/es/sites/default/files/m/marcas-de-ropa-sustentables.jpg"
         alt=""
       />
-      <form className="writeForm">
+
+  
+       <form className="writeForm"  onSubmit={enviarEscrito}>
+
+        {error ? (
+          <Alert className="alertError" variant="danger"> Todos los campos son obligatorios</Alert>
+        ) : null}
         <div className="writeFormGroup">
+
           <label htmlFor="fileInput">
             <i className=" writeIcon bi bi-plus-lg"></i>
           </label>
@@ -21,17 +53,21 @@ function Write() {
             className="writeInput"
             autoFocus={true}
             type="text"
+            name="titulo"
             placeholder="Titulo"
+            onChange={datosPublicacion}
           />
         </div>
         <div className="writeGroup">
           <textarea
             className="writeInput writeText"
+            name="historia"
             placeholder="Cuente su historia..."
+            onChange={datosPublicacion}
             type="text"
           ></textarea>
         </div>
-        <button className="writeSubmit">Publicar</button>
+        <button type="submit" className="writeSubmit">Publicar</button>
       </form>
     </div>
   );

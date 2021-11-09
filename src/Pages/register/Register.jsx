@@ -4,31 +4,28 @@ import { Link } from "react-router-dom";
 import "./register.css";
 
 function Register() {
-  const [username, setUsername] = useState("");
-
-  const [email, setEmail] = useState("");
-
-  const [password, setPassword] = useState("");
 
   const [error, setError] = useState(false);
+  const [registro, setRegistro] = useState({
+     username: "",
+     email: "",
+     password: ""
+  });
+
+ const datosRegistro =(e)=>{
+     
+  setRegistro({
+    ...registro,
+    [e.target.name] : e.target.value
+  })
+ }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(username.trim() === ""){
-      setError(true);
-      return
-    }
 
-    setError(false);
-
-    const datos = {
-      username,
-      email,
-      password,
-    };
-
-    console.log(datos);
+    console.log(registro);
   };
 
   return (
@@ -46,7 +43,8 @@ function Register() {
           <Form.Control
             type="text"
             placeholder="Enter usename"
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            onChange={datosRegistro}
           />
         </Form.Group>
 
@@ -55,7 +53,8 @@ function Register() {
           <Form.Control
             type="email"
             placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            onChange={datosRegistro}
           />
         </Form.Group>
 
@@ -64,7 +63,8 @@ function Register() {
           <Form.Control
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            onChange={datosRegistro}
           />
         </Form.Group>
 

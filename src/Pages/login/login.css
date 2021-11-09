@@ -10,6 +10,11 @@
   font-family: "Lora", serif;
 }
 
+.alertError{
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+
+}
 .loginForm {
   margin-top: 20px;
 }

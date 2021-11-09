@@ -12,7 +12,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const user = false;
+  const user = true;
   return (
     <Router>
       <TopBar />

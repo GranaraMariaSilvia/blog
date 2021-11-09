@@ -9,6 +9,16 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+.alertError{
+ margin-left: 150px;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+  width:70vw;
+  margin-top: 10px;
+
+
+}
 .writeForm {
   position: relative;
 }
@@ -62,6 +72,8 @@
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
+
+ 
 }
 
 @media (max-width: 500px) {
@@ -78,5 +90,11 @@
   .writeImg {
     width: 90vw;
     height: 250px;
+  }
+
+  .alertError{
+    width: 90vw;
+    margin: 10px 20px 20px 20px;
+   
   }
 }

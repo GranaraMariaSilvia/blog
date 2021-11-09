@@ -4,27 +4,30 @@ import { Link } from "react-router-dom";
 import "./login.css";
 
 function Login() {
-  const [datos, setDatos] = useState({
-    email: " ",
-    password: " "
-  });
 
   const [error, setError] = useState(false);
 
- const datosLogin=(e)=>{
-     
-  setDatos({  
-    ...datos,   
-    [e.target.name] : e.target.value
-  })
- }
+  const [datos, setDatos] = useState({
+       email : "",
+       password: ""
+  });
+
+  
+  const datosInput =(e)=>{
+      setDatos({
+        ...datos,
+        [e.target.name] : e.target.value
+
+      })
+
+  }
 
   const enviarDatos = (e) => {
     e.preventDefault();
-   
-   
+ 
+  
     
-   
+  
      console.log(datos);
   };
 
@@ -34,7 +37,7 @@ function Login() {
         <p className="loginTitle">Login</p>
 
         {error ? (
-          <Alert variant="danger"> Todos los campos son obligatorios</Alert>
+          <Alert  className="alertError" variant="danger"> Todos los campos son obligatorios</Alert>
         ) : null}
 
 
@@ -44,7 +47,7 @@ function Login() {
             type="email"
             placeholder="Email"
             name="email"
-            onChange={datosLogin}
+            onChange={datosInput}
           />
         </Form.Group>
 
@@ -54,7 +57,7 @@ function Login() {
             type="password"
             placeholder="Password"
             name="password"
-            onChange={datosLogin}
+            onChange={datosInput}
           />
         </Form.Group>
 
