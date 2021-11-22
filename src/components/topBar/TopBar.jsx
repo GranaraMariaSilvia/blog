@@ -1,10 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import "./topbar.css";
-import { Navbar, Container, Nav, Form } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Topbar() {
   const user = true;
+
+  const [search , setSearch]=useState(false);
+
+  const openSearch =(e)=>{
+    setSearch(true)
+  }
+
+  const searchClass = search ? "searchInput.active " : "searchInput";
+
+  const submitSearch = (e) =>{
+    e.preventDefault();
+   alert("search funkkkn")
+  }
 
   return (
     <div>
@@ -31,16 +44,20 @@ function Topbar() {
                 Registrarse
               </Link>
             </Nav>
+
             <Nav className="topIcon">
               <i className="bi bi-facebook"></i>
 
               <i className="bi bi-instagram"></i>
             </Nav>
-            <Form className="d-flex topIcon ">
+           
+            <Form className="d-flex topIcon " onSubmit={submitSearch}>
               <div>
-                <i className="bi bi-search"></i>
+                <input className={searchClass} type="text"  placeholder="Search" />
+              <button  onClick={ openSearch} className="searchButton"> <i  className="bi bi-search" ></i></button> 
               </div>
             </Form>
+           
           </Navbar.Collapse>
         </Container>
       </Navbar>

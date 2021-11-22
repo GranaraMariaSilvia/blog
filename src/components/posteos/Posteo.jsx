@@ -1,29 +1,49 @@
 import React from "react";
 import "./posteo.css";
 import { Card } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
-function Posteo() {
+
+function Posteo({post}) {
+
+  
   return (
     <div>
+      
       <Card className="containerCard">
-        <Card.Img
-          variant="top"
-          src="https://i.pinimg.com/736x/f0/d6/e5/f0d6e5807105131fda7e9e5c16b140b1.jpg"
-        />
+        {
+          post.photo && (
+
+            <Card.Img
+              variant="top"
+              src={post.photo}
+            />
+          )
+        }
         <Card.Body>
-          <Card.Title>Titulo</Card.Title>
+          <div>
+          {post.categories.map(cat =>(
+            <span>{cat.name} </span>
+          ))}  
+          
+          </div>
+
+          <Link  to={`/post/${post._id}`} className="link">
+          <Card.Title> {post.title}</Card.Title>
+          
+           </Link>
+          <hr/>
+          <span className="postDate">{new Date(post.createdAt).toLocaleDateString() } </span>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of
+           {post.desc}
           </Card.Text>
-          <Card.Link className="linkCard" href="#">
-            Categoria
-          </Card.Link>
-          <Card.Link className="link" href="#">
-            ver mas
-          </Card.Link>
+        
+         
         </Card.Body>
       </Card>
+      
+
+      
     </div>
   );
 }

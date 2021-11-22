@@ -5,9 +5,24 @@
   object-fit: cover;
 }
 
+.searchInput {
+  border: none;
+  font-size: 18px;
+  margin-right: 10px;
+  width: 0;
+  transition: width 0.5s ease-in;
+}
+
+.searchInput.active {
+  width: 150px;
+}
+
+.searchButton {
+  border: none;
+}
 .topIcon {
-  margin-right: 15px;
-  font-size: 24px;
+  margin-right: 20px;
+  font-size: 18px;
   color: #444;
   cursor: pointer;
 }

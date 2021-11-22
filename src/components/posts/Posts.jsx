@@ -3,26 +3,21 @@ import Posteo from "../posteos/Posteo";
 import "./posts.css";
 import { Col, Row } from "react-bootstrap";
 
-function Posts() {
+function Posts({posts}) {
+
+
   return (
     <div className="containerPost">
-      <Row>
-        <Col sm={6}>
-          <Posteo />
-        </Col>
-        <Col sm={6}>
-          <Posteo />
-        </Col>
-      </Row>
 
-      <Row>
-        <Col sm={6}>
-          <Posteo />
-        </Col>
-        <Col sm={6}>
-          <Posteo />
-        </Col>
-      </Row>
+      {posts.map((p)=>(
+
+        <Posteo post={p} />
+
+          ))}
+
+
+
+      
     </div>
   );
 }

@@ -5,19 +5,17 @@
 .writeImg {
   margin-left: 150px;
   width: 70vw;
-  height: 250px;
+  height: auto;
   border-radius: 10px;
   object-fit: cover;
 }
 
-.alertError{
- margin-left: 150px;
+.alertError {
+  margin-left: 150px;
   font-size: 14px;
   font-family: "Josefin Sans", sans-serif;
-  width:70vw;
+  width: 70vw;
   margin-top: 10px;
-
-
 }
 .writeForm {
   position: relative;
@@ -72,8 +70,6 @@
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
-
- 
 }
 
 @media (max-width: 500px) {
@@ -82,19 +78,20 @@
   }
   .writeImg {
     margin-left: 20px;
+    max-width: 100%;
+    height: auto;
   }
 
   .writeText {
     margin-left: 50px;
   }
   .writeImg {
-    width: 90vw;
-    height: 250px;
+    max-width: 100%;
+    height: auto;
   }
 
-  .alertError{
+  .alertError {
     width: 90vw;
     margin: 10px 20px 20px 20px;
-   
   }
 }

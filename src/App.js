@@ -7,12 +7,15 @@ import Footer from "./components/footer/Footer";
 import Single from "./components/single/Single";
 import Write from "./Pages/write/Write";
 import Settings from "./Pages/setting/Settings";
+import Post from "./components/posteos/Post";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <TopBar />
@@ -26,6 +29,8 @@ function App() {
         <Route path="/login">{user ? <Home /> : <Login />}</Route>
 
         <Route path="/write">{user ? <Write /> : <Register />}</Route>
+
+        
 
         <Route path="/settings">{user ? <Settings /> : <Register />}</Route>
         <Route path="/post/:postId">

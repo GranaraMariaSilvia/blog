@@ -8,3 +8,9 @@
   text-decoration: none;
   color: teal;
 }
+
+.postDate {
+  font-size: 12px;
+  font-family: "Josefin Slab", serif;
+  color: rgb(124, 122, 122);
+}

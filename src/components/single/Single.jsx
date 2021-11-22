@@ -7,8 +7,17 @@ function Single() {
   return (
     <div className="single">
       {/**Post */}
-      <SinglePost />
-      <Sidebar />
+      <div className="row">
+        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-9 ">
+     
+        <SinglePost />
+
+        </div>
+
+      <div className="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+          <Sidebar />
+        </div>
+      </div>
     </div>
   );
 }

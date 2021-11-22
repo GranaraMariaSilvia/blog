@@ -1,41 +1,39 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./register.css";
 
 function Register() {
 
   const [error, setError] = useState(false);
-  const [registro, setRegistro] = useState({
-     username: "",
-     email: "",
-     password: ""
-  });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
- const datosRegistro =(e)=>{
-     
-  setRegistro({
-    ...registro,
-    [e.target.name] : e.target.value
-  })
- }
+ 
+const handleSubmit = async(e)=>{
+  e.preventDefault();
+  try {
+    setError(false)
+  const res = await axios.post("/auth/register",{
+      username,
+      email,
+      password
+    });
+    res.data && window.location.replace("/login")
+  } catch (error) {
+    console.log(error)
+   setError(true)
+  }
+}
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-
-    console.log(registro);
-  };
+  
 
   return (
     <div className="register">
       <Form className="registerForm" onSubmit={handleSubmit}>
         <p className="registerTitle">Register</p>
-
-        {error ? (
-          <Alert className="alertError" variant="danger"> Todos los campos son obligatorios</Alert>
-        ) : null}
 
 
         <Form.Group className="mb-3" controlId="userName">
@@ -44,7 +42,7 @@ function Register() {
             type="text"
             placeholder="Enter usename"
             name="username"
-            onChange={datosRegistro}
+            onChange={e=>setUsername(e.target.value)}
           />
         </Form.Group>
 
@@ -54,7 +52,7 @@ function Register() {
             type="email"
             placeholder="Enter email"
             name="email"
-            onChange={datosRegistro}
+            onChange={e=>setEmail(e.target.value)}
           />
         </Form.Group>
 
@@ -64,7 +62,7 @@ function Register() {
             type="password"
             placeholder="Password"
             name="password"
-            onChange={datosRegistro}
+            onChange={e=>setPassword(e.target.value)}
           />
         </Form.Group>
 
@@ -76,6 +74,7 @@ function Register() {
             Login
           </Link>
         </Button>
+     {error && <span style={{color:"red"}} >Algo salio mal!</span> } 
       </Form>
     </div>
   );
