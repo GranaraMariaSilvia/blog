@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import TopBar from "./components/topBar/TopBar";
 import Home from "./Pages/home/Home";
 import Login from "./Pages/login/Login";
@@ -11,11 +11,13 @@ import Post from "./components/posteos/Post";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Context from "./context/Context";
+
 
 function App() {
-  const user = false;
+  const {user}= useContext(Context)
+  
   return (
     <Router>
       <TopBar />

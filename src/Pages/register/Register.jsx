@@ -70,11 +70,13 @@ const handleSubmit = async(e)=>{
           Register
         </Button>
         <Button className="loginBoton" variant="outline-dark" type="submit">
-          <Link className="link" to="/login">
+          <Link className="botonLink" to="/login">
             Login
           </Link>
         </Button>
-     {error && <span style={{color:"red"}} >Algo salio mal!</span> } 
+        <div className="msjError">
+     {error && <span className="msj" style={{color:"red"}} >Algo salio mal!</span> } 
+     </div>
       </Form>
     </div>
   );

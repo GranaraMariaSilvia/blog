@@ -12,13 +12,10 @@
   font-family: "Lora", serif;
 }
 
-.alertError{
+.alertError {
   font-size: 14px;
   font-family: "Josefin Sans", sans-serif;
-
 }
-
-
 
 .registerForm {
   margin-top: 20px;
@@ -27,29 +24,45 @@
 .registerBoton {
   margin-top: 20px;
   padding: 10px;
- 
 
-  width: 300px;
+  width: 200px;
 }
 .loginBoton {
-  position: absolute;
-  top: 80px;
-  right: 70px;
-  background-color: teal;
+  margin-top: 20px;
   color: white;
   cursor: pointer;
   border: none;
   padding: 10px;
-  border-radius: 10px;
+
+  width: 100px;
 }
-.link {
+
+.botonLink {
   text-decoration: none;
-  color: inherit;
+  color: aqua;
+}
+.botonLink:hover {
+  color: #f08080;
+}
+
+.msjError {
+  width: 250px;
+  margin: 20px 10px 5px 10px;
+  background-color: rgb(201, 207, 207);
+}
+.msj {
+  font-size: 16px;
+  padding: 10px;
+  margin-left: 70px;
 }
 
 @media (max-width: 500px) {
   .loginBoton {
-    right: 35px;
-    margin-top: 500px;
+    width: 70px;
+
+    padding: auto;
+  }
+  .registerBoton {
+    width: 120px;
   }
 }

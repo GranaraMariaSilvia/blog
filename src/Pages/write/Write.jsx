@@ -1,53 +1,73 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 import "./write.css";
 import {  Alert} from "react-bootstrap";
-import { set } from "react-hook-form";
+import {Context} from "../../context/Context";
+import axios from "axios";
 
 function Write() {
 
-  const [error, setError] = useState(false);
-
-const [publicacion, setPublicacion] =useState({
-     titulo: "",
-     historia: ""
-});
-
-const datosPublicacion =(e)=>{
-    
-  setPublicacion({
-       ...publicacion,
-       [e.target.name] : e.target.value
-  })
-}
+ 
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
+  const {user}= useContext(Context);
 
 
-const enviarEscrito =(e)=>{
+
+const handleSubmit = async (e)=>{
   e.preventDefault();
 
- 
-    console.log(publicacion)
+  const newPost = {
+    username:user.username,
+    title,
+    desc,
+  }
+  if(file){
+   const data = new FormData();
+   const filename= Date.now()+file.name;
+   data.append("name", filename)
+   data.append("file", file)
+   newPost.photo = filename;
+   try {
+    await axios.post("/upload",data)
+   } catch (error) {
+     console.log(error);
+   }
+  }
+
+  try {
+
+   const res = await axios.post("/posts", newPost);
+
+   window.location.replace("/post/"+ res.data._id)
+    
+  } catch (error) {
+    console.log(error);
+  }
+
 }
 
   return (
     <div className="write">
+      {file && (
+
       <img
         className="writeImg"
-        src="https://img.vixdata.io/pd/jpg-large/es/sites/default/files/m/marcas-de-ropa-sustentables.jpg"
+        src={URL.createObjectURL(file)}
         alt=""
       />
+      )}
 
   
-       <form className="writeForm"  onSubmit={enviarEscrito}>
+       <form className="writeForm"  onSubmit={handleSubmit}>
 
-        {error ? (
-          <Alert className="alertError" variant="danger"> Todos los campos son obligatorios</Alert>
-        ) : null}
+       
         <div className="writeFormGroup">
 
           <label htmlFor="fileInput">
             <i className=" writeIcon bi bi-plus-lg"></i>
           </label>
-          <input type="file" id="fileInput" style={{ display: "none" }} />
+          <input type="file" id="fileInput" style={{ display: "none" }} onChange={e =>setFile(e.target.files[0])} />
 
           <input
             className="writeInput"
@@ -55,7 +75,7 @@ const enviarEscrito =(e)=>{
             type="text"
             name="titulo"
             placeholder="Titulo"
-            onChange={datosPublicacion}
+            onChange={e => setTitle(e.target.value)}
           />
         </div>
         <div className="writeGroup">
@@ -63,8 +83,8 @@ const enviarEscrito =(e)=>{
             className="writeInput writeText"
             name="historia"
             placeholder="Cuente su historia..."
-            onChange={datosPublicacion}
             type="text"
+            onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
         <button type="submit" className="writeSubmit">Publicar</button>

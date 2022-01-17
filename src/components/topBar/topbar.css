@@ -1,39 +1,54 @@
+.derechaTop {
+  display: inline-block;
+}
+
 .topImg {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 25px;
+  cursor: pointer;
 }
 
 .searchInput {
   border: none;
-  font-size: 18px;
-  margin-right: 10px;
-  width: 0;
-  transition: width 0.5s ease-in;
-}
+  font-size: 16px;
 
-.searchInput.active {
-  width: 150px;
+  margin-left: 20px;
 }
 
 .searchButton {
   border: none;
+  margin-left: 3px;
 }
 .topIcon {
   margin-right: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: #444;
   cursor: pointer;
+  display: inline-block;
 }
 
 i {
   margin-right: 10px;
 }
-
-.link {
+.topLink {
+  margin-left: 80px;
+  text-decoration: none;
+}
+.linkBoton {
+  margin-left: 40px;
   text-decoration: none;
   color: inherit;
   margin-left: 15px;
   font-family: "Josefin Sans", sans-serif;
+}
+
+.linkBoton:hover {
+  color: #f08080;
+}
+
+.botones {
+  align-items: flex-end;
 }

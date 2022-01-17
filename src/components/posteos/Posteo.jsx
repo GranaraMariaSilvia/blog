@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 function Posteo({post}) {
 
   
+  const PF = "http://localhost:5000/images/"
   return (
     <div>
       
@@ -16,7 +17,7 @@ function Posteo({post}) {
 
             <Card.Img
               variant="top"
-              src={post.photo}
+              src={PF + post.photo}
             />
           )
         }
@@ -28,7 +29,7 @@ function Posteo({post}) {
           
           </div>
 
-          <Link  to={`/post/${post._id}`} className="link">
+          <Link  to={`/post/${post._id}`} className="linkBoton">
           <Card.Title> {post.title}</Card.Title>
           
            </Link>

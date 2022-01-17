@@ -1,53 +1,51 @@
-import React, { useState } from "react";
+import React, { useRef, useContext} from "react";
 import { Form, Button ,Alert} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./login.css";
+import axios from "axios";
+import Context from "../../context/Context";
+
+
 
 function Login() {
 
-  const [error, setError] = useState(false);
+  const userRef = useRef();
+  const passwordRef = useRef();
 
-  const [datos, setDatos] = useState({
-       email : "",
-       password: ""
-  });
+  const{dispatch, isFetching} = useContext(Context);
 
-  
-  const datosInput =(e)=>{
-      setDatos({
-        ...datos,
-        [e.target.name] : e.target.value
+  const handleSubmit =async (e)=>{
+    e.preventDefault();
 
+    dispatch({type:"LOGIN_START"})
+    try {
+      const res= await axios.post("/auth/login",{
+        username: userRef.current.value,
+        password: passwordRef.current.value,
       })
 
+      dispatch({type:"LOGIN_SUCCESS", payload: res.data})
+    } catch (error) {
+      dispatch({type:"LOGIN_FAILURE"})
+    }
   }
-
-  const enviarDatos = (e) => {
-    e.preventDefault();
- 
   
     
-  
-     console.log(datos);
-  };
 
   return (
     <div className="login">
-      <Form className="loginForm" onSubmit={enviarDatos}>
+      <Form className="loginForm" onSubmit={handleSubmit}>
         <p className="loginTitle">Login</p>
 
-        {error ? (
-          <Alert  className="alertError" variant="danger"> Todos los campos son obligatorios</Alert>
-        ) : null}
 
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
-            type="email"
-            placeholder="Email"
-            name="email"
-            onChange={datosInput}
+            type="text"
+            placeholder="Ingrese su nombre de usuario..."
+            name="username"
+           ref={userRef}
           />
         </Form.Group>
 
@@ -55,17 +53,17 @@ function Login() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Ingrese su contraseña..."
             name="password"
-            onChange={datosInput}
+           ref= {passwordRef}
           />
         </Form.Group>
 
-        <Button className="botonLogin" variant="outline-light" type="submit">
+        <Button className="botonLogin" variant="outline-light" type="submit" disabled={isFetching}>
           Login
         </Button>
-        <Button className="botonRegister" variant="outline-dark" type="submit">
-          <Link className="link" to="/register">
+        <Button className="botonRegister" variant="outline-dark" >
+          <Link className="botonLink" to="/register">
             Register
           </Link>
         </Button>
