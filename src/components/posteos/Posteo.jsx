@@ -4,18 +4,33 @@ import { Card } from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 
+
+
+
+
 function Posteo({post}) {
+
+ 
 
   
   const PF = "http://localhost:5000/images/"
   return (
     <div>
-      
+     
+
+       <Link  to={`/post/${post._id}`} className="linkBoton">
+          <Card.Title className="titlePost"> {post.title}</Card.Title> 
+          
+           </Link>
+
+
+
       <Card className="containerCard">
         {
           post.photo && (
 
             <Card.Img
+            className="imgPost"
               variant="top"
               src={PF + post.photo}
             />
@@ -24,21 +39,18 @@ function Posteo({post}) {
         <Card.Body>
           <div>
           {post.categories.map(cat =>(
-            <span>{cat.name} </span>
+             <Card.Title className="titlePost"> {cat.name}</Card.Title>
           ))}  
           
           </div>
-
-          <Link  to={`/post/${post._id}`} className="linkBoton">
-          <Card.Title> {post.title}</Card.Title>
-          
-           </Link>
-          <hr/>
+         
+        
+        
           <span className="postDate">{new Date(post.createdAt).toLocaleDateString() } </span>
-          <Card.Text>
+          <Card.Text className="textCard">
            {post.desc}
           </Card.Text>
-        
+         
          
         </Card.Body>
       </Card>

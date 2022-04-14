@@ -6,6 +6,9 @@ import axios from "axios";
 
 
 function Settings() {
+
+  const {user,dispatch} = useContext(Context);
+  const PF = "http://localhost:5000/images/"
   
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -13,10 +16,12 @@ function Settings() {
   const [file, setFile] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const user = useContext(Context);
+  
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
+
+    dispatch({type:"UPDATE_START"})
   
     const updateUser = {
       userId: user._id,
@@ -32,6 +37,7 @@ function Settings() {
      updateUser.profilePic = filename;
      try {
       await axios.post("/upload",data)
+     
      } catch (error) {
        console.log(error);
      }
@@ -39,10 +45,11 @@ function Settings() {
   
     try {
   
-     await axios.put("/users/"+ user._id, updateUser);
-     
+    const res = await axios.put("/users/"+ user._id, updateUser);
+     setSuccess(true);
+     dispatch({type:"UPDATE_SUCCESS", payload: res.data});
     } catch (error) {
-      console.log(error);
+      dispatch({type:"UPDATE_FAILURE"})
     }
   
   }
@@ -59,9 +66,9 @@ function Settings() {
             <form className="settingsForm" onSubmit={handleSubmit}>
               <label> Foto de perfil</label>
               <div className="settingsPP">
-                <img
-                  src={user.profilePic}
-                />
+
+              <img src={file ? URL.createObjectURL(file):PF+user.profilePic}
+               alt="" />
                 <label htmlFor="fileInput">
                   <i className=" settingsPPIcon bi bi-person-circle"></i>
                 </label>
@@ -79,6 +86,7 @@ function Settings() {
               <input type="password"  onChange={e=>setPassword(e.target.value)} />
               <button className="settingsSubmit" type="submit"> Enviar</button>
             </form>
+            {success && <span style={{color:"green", textAlign:"center", marginTop:"50px"}}>Perfil actualizado...</span>}
           </div>
         </div>
         <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3">

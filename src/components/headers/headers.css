@@ -21,9 +21,10 @@
 .titulolg {
   position: absolute;
   top: 50%;
-  font-size: 40px;
+  font-size: 50px;
   color: rgb(13, 14, 15);
   font-family: "Lora", serif;
+  font-weight: 700;
   margin-left: 8%;
 }
 

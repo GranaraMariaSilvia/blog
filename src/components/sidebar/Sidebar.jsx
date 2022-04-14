@@ -32,7 +32,7 @@ useEffect(() => {
           />
         </Col>
       </Row>
-      <p className="mt-3">
+      <p className="bioBlog">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
         harum qui facilis adipisci aspernatur. Nostrum rerum odio at voluptas
         animi odit, eveniet, ut amet qui, ratione quisquam eius repudiandae
@@ -45,8 +45,8 @@ useEffect(() => {
   
 {
  cats.map((c) =>(
-  <Link to={`/?cat=${c.name}`} className="link"> 
-  <li className="sidebarListItem"> {c.name} </li>
+  <Link to={`/?cat=${c.name}`} className="link" > 
+  <li className="sidebarListItem" key={cats.id}>  {c.name} </li>
   
   </Link>
  ))

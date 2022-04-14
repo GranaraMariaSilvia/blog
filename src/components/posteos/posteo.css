@@ -2,6 +2,7 @@
   margin: 10px 5px 5px 30px;
   border: none;
   border-radius: 15px;
+  height: 400px;
 }
 
 .linkCard {
@@ -13,4 +14,37 @@
   font-size: 12px;
   font-family: "Josefin Slab", serif;
   color: rgb(124, 122, 122);
+}
+
+.titlePost {
+  margin-left: 20px;
+  font-family: "Lora", serif;
+  font-size: 26px;
+}
+
+.titlePost:first-letter {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.imgPost {
+  width: 400px;
+}
+
+.textCard {
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis; /*sirve para poner los puntos suspensivos*/
+  overflow: hidden; /*recorta el contenido, no permite que se desborde del elemento*/
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word; /*evita el desborde, recorta la palabra si es necesario*/
+}
+@media (max-width: 400px) {
+  .imgPost {
+    max-width: 280px;
+    height: auto;
+    margin-left: 60px;
+  }
 }

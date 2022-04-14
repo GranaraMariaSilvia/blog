@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { useLocation } from "react-router";
 import axios from "axios";
 import Context from "../../context/Context";
+import {Link} from "react-router-dom";
 
 function SinglePost() {
 
@@ -19,6 +20,7 @@ const PF = "http://localhost:5000/images/";
 const {user}= useContext(Context);
 const [title, setTitle] = useState("");
 const [desc, setDesc] = useState("");
+const [categoria, setCategoria] = useState("");
 const [updateMode, setUpdateMode] = useState(false);
 
 
@@ -29,6 +31,7 @@ useEffect(() => {
     setPost(res.data)
     setTitle(res.data.title)
     setDesc(res.data.desc)
+    setCategoria(res.data.categoria)
   }
  getPost()
 }, [path])
@@ -55,7 +58,9 @@ const handleUpdate = async()=>{
     await axios.put( `/posts/${post._id}`,{
       username: user.username,
       title:title,
-       desc:desc
+       desc:desc,
+       categoria: categoria
+
       
      });
   //  window.location.reload()  //paraq me lleve a la pagina de inicio
@@ -103,10 +108,25 @@ const handleUpdate = async()=>{
 
           <Card.Text className="singlePostInfo">
             <span className="singlePostAutor">
-              Autor: <b>{ post.username}</b>
+              Autor:
+            <Link to={`/?user=${post.username}`} className="link">
+              <b>{ post.username}</b>
+              </Link>
             </span>
             <spa className="singlePostDate">{new Date(post.createdAt).toLocaleDateString()}</spa>
           </Card.Text>
+          <Card.Text>
+          <span className="singlePostAutor">
+              Categoria:
+            <Link to={`/?user=${post.categoria}`} className="link">
+              <b>{ categoria}</b>
+              </Link>
+            </span>
+          
+
+          </Card.Text>
+
+
 
           {updateMode? (<textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)} />) :
            (

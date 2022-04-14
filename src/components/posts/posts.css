@@ -1,4 +1,18 @@
 .containerPost {
-  margin: 10px 20px;
-  margin-top: 20px;
+  -moz-columns: 150px 2;
+  -webkit-columns: 150px 1;
+  columns: 150px 2;
+}
+
+@media (max-width: 500px) {
+  .containerPost {
+    column-count: 1;
+    column-width: 120px;
+  }
+}
+
+@media (max-width: 900px) {
+  .containerPost {
+    column-count: 1;
+  }
 }

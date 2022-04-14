@@ -28,10 +28,13 @@ const fetchPost = async () =>{
   return (
     <div>
       <Headers />
-      <Row>
-        <Col sm={9}>
+       
+      <Row >
+        
+        <Col sm={9} >
           <Posts posts={posts} />
         </Col>
+      
         <Col sm={3}>
           <Sidebar />
         </Col>

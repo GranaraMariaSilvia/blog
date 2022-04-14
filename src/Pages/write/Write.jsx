@@ -7,20 +7,25 @@ import axios from "axios";
 function Write() {
 
  
+ 
+
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const {user}= useContext(Context);
-
+  const [categories, setCategories] = useState("");
 
 
 const handleSubmit = async (e)=>{
   e.preventDefault();
 
+ 
+
   const newPost = {
     username:user.username,
     title,
     desc,
+    categories
   }
   if(file){
    const data = new FormData();
@@ -47,6 +52,13 @@ const handleSubmit = async (e)=>{
 
 }
 
+//categoria funcion
+
+
+
+
+
+
   return (
     <div className="write">
       {file && (
@@ -60,6 +72,9 @@ const handleSubmit = async (e)=>{
 
   
        <form className="writeForm"  onSubmit={handleSubmit}>
+       
+      
+
 
        
         <div className="writeFormGroup">
@@ -77,7 +92,19 @@ const handleSubmit = async (e)=>{
             placeholder="Titulo"
             onChange={e => setTitle(e.target.value)}
           />
+
+<input
+            className="writeInput"
+            autoFocus={true}
+            type="text"
+            name="categoria"
+            placeholder="Categoria"
+            onChange={e => setCategories(e.target.value)}
+          />
+
+
         </div>
+
         <div className="writeGroup">
           <textarea
             className="writeInput writeText"
@@ -87,6 +114,7 @@ const handleSubmit = async (e)=>{
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
+      
         <button type="submit" className="writeSubmit">Publicar</button>
       </form>
     </div>

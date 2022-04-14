@@ -21,6 +21,10 @@
   position: relative;
 }
 
+.categoria {
+  margin-top: 10px;
+}
+
 .writeFormGroup {
   margin-left: 150px;
   display: flex;

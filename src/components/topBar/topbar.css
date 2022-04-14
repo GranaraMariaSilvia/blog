@@ -42,7 +42,9 @@ i {
   text-decoration: none;
   color: inherit;
   margin-left: 15px;
-  font-family: "Josefin Sans", sans-serif;
+  font-weight: 500;
+
+  font-family: "Raleway", sans-serif;
 }
 
 .linkBoton:hover {

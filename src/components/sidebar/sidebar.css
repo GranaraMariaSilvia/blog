@@ -39,13 +39,21 @@
   width: 50%;
   margin-top: 15px;
   cursor: pointer;
-  font-family: "Josefin Slab", serif;
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
   font-size: 22px;
   text-decoration: none;
   color: #222;
+  text-transform: uppercase;
 }
 .sidebarListItem:hover {
   color: #f08080;
+}
+
+.bioBlog {
+  margin-top: 10px;
+  font-family: "Dancing Script", cursive;
+  font-size: 22px;
 }
 
 .subtitulo {
@@ -100,8 +108,10 @@
     width: 50%;
     margin-top: 15px;
     cursor: pointer;
-    font-family: "Josefin Slab", serif;
-    font-size: 18px;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: uppercase;
   }
   .sidebarTitulo {
     margin: 10px;
